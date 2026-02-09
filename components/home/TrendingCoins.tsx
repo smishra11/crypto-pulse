@@ -8,7 +8,6 @@ import { TrendingCoinsFallback } from './fallback';
 
 const TrendingCoins = async () => {
   let trendingCoins;
-
   try {
     trendingCoins = await fetcher<{ coins: TrendingCoin[] }>(
       '/search/trending',
