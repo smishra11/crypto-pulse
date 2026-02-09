@@ -2,10 +2,27 @@ import { clsx, type ClassValue } from 'clsx';
 // import { Time } from 'lightweight-charts';
 import { twMerge } from 'tailwind-merge';
 
+/**
+ * Merge and normalize CSS class name inputs into a single Tailwind-compatible string.
+ *
+ * @param inputs - Class name inputs (strings, arrays, or conditional objects) to normalize and merge
+ * @returns A single string with normalized and Tailwind-resolved class names
+ */
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Format a numeric value as a localized currency or plain number string.
+ *
+ * If `value` is null, undefined, or NaN this returns "$0.00" unless `showSymbol` is false, in which case it returns "0.00".
+ *
+ * @param value - The numeric value to format
+ * @param digits - Number of fraction digits to display (used as both minimum and maximum); defaults to 2
+ * @param currency - ISO 4217 currency code to use when showing a symbol; defaults to "USD"
+ * @param showSymbol - When true or omitted, include the currency symbol; when false, return a plain number string
+ * @returns A localized string representing the formatted currency or number
+ */
 export function formatCurrency(
   value: number | null | undefined,
   digits?: number,
@@ -30,6 +47,12 @@ export function formatCurrency(
   });
 }
 
+/**
+ * Formats a numeric change as a percentage string with one decimal place.
+ *
+ * @param change - The numeric change to format; may be positive, negative, zero, or null/undefined.
+ * @returns The change rounded to one decimal place followed by `%`, or `0.0%` for `null`, `undefined`, or `NaN`.
+ */
 export function formatPercentage(change: number | null | undefined): string {
   if (change === null || change === undefined || isNaN(change)) {
     return '0.0%';
@@ -38,6 +61,15 @@ export function formatPercentage(change: number | null | undefined): string {
   return `${formattedChange}%`;
 }
 
+/**
+ * Selects Tailwind CSS and icon class names representing an upward or downward trend based on a numeric value.
+ *
+ * @param value - Numeric change where a value greater than zero indicates an upward trend; zero or less indicates a downward/neutral trend
+ * @returns An object with `textClass`, `bgClass`, and `iconClass`:
+ * - `textClass`: text color class for the trend
+ * - `bgClass`: background color class for the trend
+ * - `iconClass`: icon name class indicating direction (`icon-up` or `icon-down`)
+ */
 export function trendingClasses(value: number) {
   const isTrendingUp = value > 0;
 
@@ -48,6 +80,12 @@ export function trendingClasses(value: number) {
   };
 }
 
+/**
+ * Produces a human-readable relative time string for the given date.
+ *
+ * @param date - A Date object, numeric timestamp, or date string representing a past or future moment
+ * @returns `just now` when less than 60 seconds have passed; `"<N> min"` for minutes; `"<N> hour(s)"` for hours; `"<N> day(s)"` for days; `"<N> week(s)"` for weeks; otherwise the date formatted as `YYYY-MM-DD`.
+ */
 export function timeAgo(date: string | number | Date): string {
   const now = new Date();
   const past = new Date(date);
