@@ -1,10 +1,10 @@
+import React, { Suspense } from 'react';
 import CoinOverview from '@/components/home/CoinOverview';
 import {
   CoinOverviewFallback,
   TrendingCoinsFallback,
 } from '@/components/home/fallback';
 import TrendingCoins from '@/components/home/TrendingCoins';
-import React, { Suspense } from 'react';
 
 const Page = async () => {
   return (
