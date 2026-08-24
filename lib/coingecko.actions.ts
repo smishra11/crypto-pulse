@@ -42,6 +42,21 @@ export async function fetcher<T>(
   return response.json();
 }
 
+export async function getSearchCoins(): Promise<CoinMarketData[]> {
+  return fetcher<CoinMarketData[]>(
+    '/coins/markets',
+    {
+      vs_currency: 'usd',
+      order: 'market_cap_desc',
+      per_page: 250,
+      page: 1,
+      sparkline: false,
+      price_change_percentage: '24h',
+    },
+    300,
+  );
+}
+
 interface PoolApiItem {
   id: string;
   attributes?: {
