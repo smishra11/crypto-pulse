@@ -102,7 +102,6 @@ const page = async ({ params }: NextPageProps) => {
             ))}
           </ul>
         </div>
-        <p>Top Gainer and Loosers</p>
       </section>
     </main>
   );
