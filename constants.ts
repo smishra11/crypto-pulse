@@ -97,6 +97,7 @@ export const PERIOD_CONFIG: Record<Period, { days: number }> = {
   monthly: { days: 30 },
   '3months': { days: 90 },
   '6months': { days: 180 },
+  yearly: { days: 365 },
   max: { days: 365 },
 };
 
@@ -109,7 +110,7 @@ export const PERIOD_BUTTONS: { value: Period; label: string }[] = [
   { value: 'max', label: 'Max' },
 ];
 
-export const LIVE_INTERVAL_BUTTONS: { value: '1s' | '1m'; label: string }[] = [
-  { value: '1s', label: '1s' },
+export const LIVE_INTERVAL_BUTTONS: { value: '1m' | '5m'; label: string }[] = [
   { value: '1m', label: '1m' },
+  { value: '5m', label: '5m' },
 ];
