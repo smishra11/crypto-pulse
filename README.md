@@ -34,6 +34,8 @@ Create `.env.local` in the project root:
 ```env
 COINGECKO_BASE_URL=https://api.coingecko.com/api/v3
 COINGECKO_API_KEY=your_coingecko_demo_api_key
+NEXT_PUBLIC_COINGECKO_WEBSOCKET_URL=wss://stream.coingecko.com/v1
+
 ```
 
 The API key is used only by server-side actions and is not exposed to the browser.
