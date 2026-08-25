@@ -1,6 +1,65 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## CoinPulse
+
+CoinPulse is a cryptocurrency market dashboard built with Next.js. It provides coin discovery, market summaries, historical charts, and live pool data using CoinGecko's Demo API.
+
+## Project Overview
+
+- Browse market-ranked coins with price, market cap, volume, and 24-hour change.
+- Search coins by name, symbol, or CoinGecko ID with the header search or `Ctrl/Cmd + K`.
+- View coin details, historical pool OHLCV charts, current pool price, and recent pool trades.
+- Change chart ranges from one day to one year.
+- Poll live pool data at one-minute or five-minute intervals.
+- Use the responsive dark interface across desktop and mobile layouts.
+
+Live pool data uses CoinGecko Demo REST endpoints. The Demo API is cached, so updates are near-real-time rather than tick-by-tick. If a coin does not have a resolved GeckoTerminal pool, the app falls back to coin-level data where available.
+
+## Setup
+
+### Prerequisites
+
+- Node.js 20 or newer
+- npm
+- A CoinGecko Demo API key
+
+### Install
+
+```bash
+npm install
+```
+
+Create `.env.local` in the project root:
+
+```env
+COINGECKO_BASE_URL=https://api.coingecko.com/api/v3
+COINGECKO_API_KEY=your_coingecko_demo_api_key
+```
+
+The API key is used only by server-side actions and is not exposed to the browser.
+
+### Run Locally
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). If that port is unavailable, Next.js will report the alternate local port in the terminal.
+
+## Available Commands
+
+```bash
+npm run dev      # Start the development server
+npm run lint     # Run ESLint
+npm run build    # Create a production build
+npm run start    # Start the production server
+```
+
+## Main Routes
+
+- `/` - Dashboard overview
+- `/coins` - Market coin list
+- `/coins/[id]` - Coin details and pool market data
 
 First, run the development server:
 
